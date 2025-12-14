@@ -1,0 +1,34 @@
+name: ssh-deploy
+description: "Action for deployment with scp/ssh and remote script execution"
+author: "Alan Silva"
+inputs:
+  REMOTE_KEY:
+    description: "ssh private key"
+    required: true
+  REMOTE_HOST:
+    description: "hostname"
+    required: true
+  REMOTE_USER:
+    description: "username"
+    required: true
+  REMOTE_PORT:
+    description: "ssh port"
+    required: false
+    default: "22"
+  REMOTE_DIR:
+    description: "remote target directory"
+    required: true
+  TARGETS:
+    description: "target files and directories"
+    required: true
+  SCRIPT_BEFORE:
+    description: "script before"
+    required: false
+    default: ""
+  SCRIPT_AFTER:
+    description: "script after"
+    required: false
+    default: ""
+runs:
+  using: docker
+  image: Dockerfile
